@@ -1,0 +1,38 @@
+server:
+    port: 8080
+
+mybatis-plus:
+    configuration:
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        password: ${MYSQL_PASSWORD}
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://localhost:3306/coin-shell?useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+    data:
+        redis:
+            host: 127.0.0.1
+            port: 6379
+            timeout: 10s
+            lettuce:
+                pool:
+                    min-idle: 1
+                    max-active: 100
+                    time-between-eviction-runs: 10000
+
+        redisson:
+            config: |
+                singleServerConfig:
+                  address: "redis://127.0.0.1:6379"
+              
+
+logging:
+    level:
+        com.xyxy.coinshell: debug
+
+
+ai:
+    service:
+        url: http://localhost:8000

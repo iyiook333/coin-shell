@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.redis.password",
+      "type": "java.lang.String",
+      "description": "Description for spring.redis.password."
+  }
+] }

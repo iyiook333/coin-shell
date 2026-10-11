@@ -1,0 +1,12 @@
+﻿.env
+__pycache__/
+venv/
+.idea/
+target/
+.hvigor/
+oh_modules/
+**/build/
+**/.preview/
+local.properties
+.cxx/
+*.log
