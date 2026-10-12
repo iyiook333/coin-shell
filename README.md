@@ -1,5 +1,5 @@
 # Coin Shell
-
+demo
 一个积分权益系统的完整实现：Spring Boot 后端 + HarmonyOS 客户端 + Python AI 服务。
 
 用户通过每日签到、限时抢购等活动获取金币，金币可按比例兑换为现金并记录收益流水。
