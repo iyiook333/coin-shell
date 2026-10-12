@@ -5,6 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.xyxy.coinshell.entity.vo.LoginVo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 public class RefreshTokenInterceptor implements HandlerInterceptor {
 
     private StringRedisTemplate stringRedisTemplate;
@@ -25,10 +27,8 @@ public class RefreshTokenInterceptor implements HandlerInterceptor {
         //1.获取请求头中的 token
         String token = request.getHeader("Authorization");
 
-
-        System.out.println("=== RefreshTokenInterceptor 执行，路径：" + request.getRequestURI());
-        System.out.println("=== Token：" + token);
-
+        // 仅记录是否携带凭证，不记录 token 明文（避免凭证写入日志）
+        log.debug("RefreshTokenInterceptor 处理请求：{}，是否携带凭证：{}", request.getRequestURI(), StrUtil.isNotBlank(token));
 
         //1.1.判断token是否存在
         if (StrUtil.isBlank(token)){

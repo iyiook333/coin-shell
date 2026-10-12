@@ -44,18 +44,8 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
-        <!-- JWT 工具 -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-        </dependency>
-        <!-- 因为 jjwt 0.9.1 依赖了 javax.xml.bind，Java 17 需要额外引入 -->
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
-        </dependency>
+        <!-- 说明：登录态使用 UUID token + Redis Hash 实现，见 LoginServiceImpl。
+             项目未使用 JWT，因此不引入 jjwt / jaxb-api 依赖。 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

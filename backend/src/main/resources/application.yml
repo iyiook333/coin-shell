@@ -3,7 +3,10 @@ server:
 
 mybatis-plus:
     configuration:
-        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+        # 默认不打印 SQL 到标准输出（避免参数值随日志泄露）。
+        # 本地排查 SQL 时可临时改为 org.apache.ibatis.logging.stdout.StdOutImpl，
+        # 或通过 mybatis-plus.configuration.log-impl 启动参数覆盖。
+        log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 spring:
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver

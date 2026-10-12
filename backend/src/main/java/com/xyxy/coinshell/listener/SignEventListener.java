@@ -29,7 +29,6 @@ public class SignEventListener {
             int dayOfYear = today.getDayOfYear() - 1;
             String key = REDIS_KEY_PREFIX + userId + ":" + year;
             // 写 Redis Bitmap，即使失败也不影响主事务
-            redisTemplate.opsForValue().setBit(key, dayOfYear, true);
             Boolean result = redisTemplate.opsForValue().setBit(key, dayOfYear, true);
             log.info("写入结果: {}", result);  // 打印 true 或 false
             log.info("签到缓存写入成功: userId={}, date={}", userId, today);
